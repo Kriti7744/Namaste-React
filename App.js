@@ -1,49 +1,43 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-const heading = React.createElement(
-    "h1",
-    {
-      id: "title",
-      style:{
-        color:'magenta',
-        fontSize:'30px', 
-        backgroundColor:'yellow'
-      },
-    },
-    "Heading 1"
-  );
-  const heading2 = React.createElement(
-    "h2",
-    {
-      id: "title",
-      className:'heading2'
-    },
-    "Heading 2"
-  );
+import icon from "./user.jpeg";
+import food from "./food.png";
+
+const Header=()=>{
+  const headerStyle = {
+    display: "flex",
+    padding: "10px",
+    backgroundColor: "gray",
+  };
+
+  const logoStyle = {
+    width: "50px",
+    height: "auto",
+  };
+
+  const searchInputStyle = {
+    flex: "1", 
+    margin: "0 10px", 
+    padding: "6px",
+    borderRadius: "4px",
+    border: "none",
+    outline: "none",
+  };
+
+  const userIconStyle = {
+    width: "50px",
+    height: "auto",
+  };
+
+ return(
+  <header style={headerStyle}>
+   <img src={food} alt="Food logo" style={logoStyle} ></img>
+   <input type="search" placeholder="search your favorite food" style={searchInputStyle}></input>
+   <img src={icon} alt=" User icon" style={userIconStyle}></img>
+  </header>
+ )
+}
   
-  const sub=(a,b)=>{
-    return a-b;
-  }
-  console.log(sub);
-  const add=React.createElement(
-    "div",
-    {
-        id:'math'
-    },
-    "Kriti's age is:"+ sub(2023,2000)
-  );
-  console.log(heading);
-  const container = React.createElement(
-    "div",
-    {
-      id: "container",
-      style:{
-        color:'blue',
-        fontSize:'30px'
-      },
-    },
-    [heading, heading2,add]
-  );
   const root = ReactDOM.createRoot(document.getElementById("root"));
  
-  root.render(container);
+  root.render(<Header/>);
