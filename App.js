@@ -2,12 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import icon from "./user.jpeg";
 import khana from "./food1.png";
-
-const Title=()=>(
-  <h1 id='title' key='h1' className="title">
-    Bhoj Mahal
-  </h1>
-)
+  
 const Header=()=>{
   const headerStyle = {
     display: "flex",
