@@ -14,16 +14,7 @@ const Header=()=>{
   
     };
   
-    const searchInputStyle = {
-      flex: "1", 
-      padding: "6px",
-      borderRadius: "8px",
-      border: "none",
-      outline: "none",
-      marginRight:"auto",
-      marginLeft:"10px",
-    };
-  
+    
   
   
     const styleUL={
@@ -44,27 +35,13 @@ const Header=()=>{
     // color: '#333', 
     // cursor: 'pointer',
     // };
-   const [searchText,setSearchText]=useState("KFC");
+
+    
   
    return(
     <header style={headerStyle}>
-     {/* <img src={khana} alt="Food logo" style={logoStyle} ></img> */}
-     {/* <span> */}
-     <input 
-     type="text" 
-     placeholder="search your favorite food" 
-     style={searchInputStyle}
-     value={searchText}
-     onChange={(e)=>{
-      setSearchText(e.target.value);
-    }}
-      >
-     </input>
-     {/* {<i className="fas fa-search" ></i> } */}
-     {/* </span> */}
     
-     
-     
+      
       <ul style={styleUL} className="nav-items">
         <li style={styleLI}> <i className="fas fa-gift"></i>Offers</li>
         <li style={styleLI}><i className="fas fa-question-circle"></i>Help</li>
