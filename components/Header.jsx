@@ -14,12 +14,10 @@ const Header=()=>{
   
     };
   
-    
-  
-  
     const styleUL={
       display:"inline",
       padding:0,
+      marginLeft:"auto",
       
     };
     const styleLI={
@@ -29,19 +27,10 @@ const Header=()=>{
       display:"inline", 
     };
 
-    const x="Kriti";
-    // const searchIconStyle={
-    //   marginLeft: '10px',
-    // color: '#333', 
-    // cursor: 'pointer',
-    // };
-
-    
-  
-   return(
+    return(
     <header style={headerStyle}>
     
-      
+<h2>Food Palace</h2>
       <ul style={styleUL} className="nav-items">
         <li style={styleLI}> <i className="fas fa-gift"></i>Offers</li>
         <li style={styleLI}><i className="fas fa-question-circle"></i>Help</li>

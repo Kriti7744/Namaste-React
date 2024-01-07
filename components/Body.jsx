@@ -14,12 +14,9 @@ console.log(filtered);
 return filtered;
 }
 
-
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [restaurants, setRestaurants]= useState(RestaurantList);
-
- 
 
   const styleContainer = {
     display: "flex",
@@ -94,7 +91,6 @@ const Body = () => {
           )
         })}
             
-          
       </div>
     </div>
   );
