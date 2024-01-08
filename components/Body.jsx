@@ -87,8 +87,7 @@ const Body = () => {
              style={cardStyle}
              {...restaurant.data}
              />
-
-          )
+        )
         })}
             
       </div>

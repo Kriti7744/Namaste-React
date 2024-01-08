@@ -26,11 +26,13 @@ const Header=()=>{
       cursor: "pointer", 
       display:"inline", 
     };
+    const [title,setTitle]=useState("Food Palace");
+
 
     return(
     <header style={headerStyle}>
     
-<h2>Food Palace</h2>
+     <h1>{title}</h1>
       <ul style={styleUL} className="nav-items">
         <li style={styleLI}> <i className="fas fa-gift"></i>Offers</li>
         <li style={styleLI}><i className="fas fa-question-circle"></i>Help</li>
