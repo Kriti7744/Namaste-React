@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { RestaurantList } from "../src/config";
 import { RestaurantCard } from "./card";
+import {useEffect} from "react";
 
 function filterData(searchText,restaurants){
   console.log(searchText);
@@ -18,6 +19,16 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [restaurants, setRestaurants]= useState(RestaurantList);
 
+  useEffect(()=>{
+getRestaurants();  },[searchText])
+
+  async function getRestaurants(){
+    const data=await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    )
+    const json = await data.json();
+    console.log(json);
+  }
   const styleContainer = {
     display: "flex",
     flexDirection: "column",
@@ -58,6 +69,7 @@ const Body = () => {
     width: "200px",  
     margin: "10px", 
   };
+
 
   return (
     <div style={styleContainer}>
