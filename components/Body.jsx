@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { RestaurantList } from "../src/config";
 import { RestaurantCard } from "./card";
 import {useEffect} from "react";
+import Shimmer from "./Shimmer";
 
 function filterData(searchText,restaurants){
   console.log(searchText);
@@ -28,7 +29,6 @@ getRestaurants();  },[])
     );
     const json = await data.json();
     console.log(json);
-    setRestaurants(json?.data?.cards[2]?.data?.data?.cards);
   }
   const styleContainer = {
     display: "flex",
@@ -72,7 +72,7 @@ getRestaurants();  },[])
   };
 
 
-  return (
+  return restaurants.length === 0?(<Shimmer/>):(
     <div style={styleContainer}>
       <div style={styleSearchContainer}>
         <input
