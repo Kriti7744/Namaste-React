@@ -18,10 +18,11 @@ return filtered;
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
-  const [restaurants, setRestaurants]= useState(RestaurantList);
+  const [restaurants, setRestaurants]= useState([]);
 
   useEffect(()=>{
-getRestaurants();  },[])
+getRestaurants();
+  },[])
 
   async function getRestaurants(){
     const data=await fetch(
@@ -29,7 +30,12 @@ getRestaurants();  },[])
     );
     const json = await data.json();
     console.log(json);
+    console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+
+   setRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+   console.log(restaurants);
   }
+  console.log("render");
   const styleContainer = {
     display: "flex",
     flexDirection: "column",
@@ -72,7 +78,7 @@ getRestaurants();  },[])
   };
 
 
-  return restaurants.length === 0?(<Shimmer/>):(
+  return (
     <div style={styleContainer}>
       <div style={styleSearchContainer}>
         <input
@@ -95,8 +101,7 @@ getRestaurants();  },[])
       <div style={gridContainerStyle}>
         {restaurants.map((restaurant) => {
           return(
-            <RestaurantCard 
-             key={restaurant.data.id} 
+            <RestaurantCard key={restaurants?.info?.id}
              style={cardStyle}
              {...restaurant.data}
              />
