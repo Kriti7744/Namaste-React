@@ -5,20 +5,21 @@ import {useEffect} from "react";
 import Shimmer from "./Shimmer";
 
 function filterData(searchText,restaurants){
-  console.log(searchText);
+ // console.log(searchText);
   if (!searchText || searchText.trim()==="") {
     return restaurants;
   }
   const filtered = restaurants.filter((res) =>
-  res.data.name.toLowerCase().includes(searchText.toLowerCase())
+  res.info.name.toLowerCase().includes(searchText.toLowerCase())
 );
-console.log(filtered);
+//console.log(filtered);
 return filtered;
 }
 
 const Body = () => {
+  const [allRestaurants,setAllRestaurants]=useState([]);
   const [searchText, setSearchText] = useState("");
-  const [restaurants, setRestaurants]= useState([]);
+  const [filteredRestaurants, setFilteredRestaurants]= useState([]);
 
   useEffect(()=>{
 getRestaurants();
@@ -29,13 +30,15 @@ getRestaurants();
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    console.log(json);
-    console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    //console.log(json);
+    //console.log(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
 
-   setRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-   console.log(restaurants);
+   setAllRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+   setFilteredRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+
+   //console.log(restaurants);
   }
-  console.log("render");
+  //console.log("render");
   const styleContainer = {
     display: "flex",
     flexDirection: "column",
@@ -77,8 +80,10 @@ getRestaurants();
     margin: "10px", 
   };
 
+  if(filteredRestaurants?.length===0)
+  return <h1>Oops! No Restaurant Found :( </h1>
 
-  return (
+  return allRestaurants?.length===0?(<Shimmer/>):(
     <div style={styleContainer}>
       <div style={styleSearchContainer}>
         <input
@@ -92,18 +97,18 @@ getRestaurants();
         />
         <button style={searchButtonStyle} 
         onClick={()=>{
-          const data= filterData(searchText,restaurants);
-          setRestaurants(data);
+          const data= filterData(searchText,allRestaurants);
+          setFilteredRestaurants(data);
         }}
         >Search
         </button>
       </div>
       <div style={gridContainerStyle}>
-        {restaurants.map((restaurant) => {
+        {filteredRestaurants.map((restaurant) => {
           return(
-            <RestaurantCard key={restaurants?.info?.id}
+            <RestaurantCard key={restaurant?.info?.id}
              style={cardStyle}
-             {...restaurant.data}
+             {...restaurant.info}
              />
         )
         })}

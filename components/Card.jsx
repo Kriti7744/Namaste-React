@@ -1,10 +1,9 @@
 import { img_cdn_url } from "../src/config";
 
 export const RestaurantCard=({name,cuisines,cloudinaryImageId,avgRating})=>{
-    //const displayedCuisines =
-    //cuisines.length > 2 ? cuisines.slice(0, 2).join(", ") + "..." : cuisines.join(", ");
-    console.log(name);
-    const styleCard={
+    // const displayedCuisines =
+    // cuisines.length > 2 ? cuisines.slice(0, 2).join(", ") + "..." : cuisines.join(", ");
+        const styleCard={
        width:"220px",
        height:"300px",
        padding:"10px",

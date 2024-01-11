@@ -32,7 +32,7 @@ const Header=()=>{
       marginLeft: "50px",
     };
     const [title,setTitle]=useState("Food Palace");
-
+    const [isLogged,setIsLogged]=useState(true);
 
     return(
     <header style={headerStyle}>
@@ -44,6 +44,15 @@ const Header=()=>{
         <li style={styleLI}><i className="fas fa-user"></i>Profile</li>
         <li style={styleLI}><i className="fas fa-shopping-cart"></i>Cart</li>
       </ul>
+      {
+        isLogged?(
+          <button onClick={()=> setIsLogged(false)}>Logout</button>
+        ):(
+          <button onClick={()=> setIsLogged(true)}>Login</button>
+
+        )
+      }
+    
     </header>
    )
   }
