@@ -6,9 +6,10 @@ import Footer from "../components/Footer";
 import Body from "../components/Body";
 import { useState } from "react";
 import { useEffect } from "react";
-
-
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import About from "../components/About";
+import Error from "../components/Error";
+import Contact from "../components/Contact";
 const AppLayout=()=>{
   return(
     <>
@@ -18,54 +19,25 @@ const AppLayout=()=>{
     </>
    
   )
-}
+};
 
+const appRouter=createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout/>,
+    errorElement:<Error/>,
+  },
+  {
+    path: "/about",
+    element: <About/>,
+  },
+  {
+    path: "/contact",
+    element: <Contact/>,
+  }
 
-  
-  const root = ReactDOM.createRoot(document.getElementById("root"));
- 
-  root.render(<AppLayout/>);
+]);
 
-// import React, { useState, useEffect } from 'react';
-// import ReactDOM from 'react-dom';
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<RouterProvider router={appRouter }/>);
 
-// function A({  }) {
-//   console.log('A');
-//   const [state, setState] = useState(0);
-
-//   useEffect(() => {
-//     setState((prevState) => prevState + 1);
-//   }, [state]);
-
-//   return <B/>;
-// }
-
-// function B() {
-//   console.log('B');
-//   return <C />;
-// }
-
-// function C() {
-//   console.log('C');
-//   return null;
-// }
-
-// function D() {
-//   console.log('D');
-//   return null;
-// }
-
-// function App() {
-//   console.log('App');
-//   return (
-//     <div>
-//       <A>
-//         <B />
-//       </A>
-//       <D />
-//     </div>
-//   );
-// }
-
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(<App />);

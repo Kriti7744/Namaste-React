@@ -80,8 +80,8 @@ getRestaurants();
     margin: "10px", 
   };
 
-  if(filteredRestaurants?.length===0)
-  return <h1>Oops! No Restaurant Found :( </h1>
+  // if(filteredRestaurants?.length===0)
+  // return <h1>Oops! No Restaurant Found :( </h1>
 
   return allRestaurants?.length===0?(<Shimmer/>):(
     <div style={styleContainer}>
