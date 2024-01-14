@@ -35,10 +35,7 @@ const Header=()=>{
     const [title,setTitle]=useState("Food Palace");
     const [isLogged,setIsLogged]=useState(true);
 
-    useEffect(()=>{
-      console.log("useEffect");
-    });
-    console.log("render");
+  
 
     return(
     <header style={headerStyle}>
