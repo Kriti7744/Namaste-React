@@ -868,7 +868,6 @@ export const RestaurantList=[
       },
       subtype: "basic",
     },
-    
     {
       type: "restaurant",
       data: {
