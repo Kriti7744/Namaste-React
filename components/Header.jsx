@@ -36,7 +36,6 @@ const Header=()=>{
     const [isLogged,setIsLogged]=useState(true);
 
   
-
     return(
     <header style={headerStyle}>
       <a href="/">
